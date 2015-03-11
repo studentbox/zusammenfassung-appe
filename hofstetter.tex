@@ -2,6 +2,140 @@
 
 \section{Anforderungen}
 
+\subsection{Einführung}
+
+Anforderungen können auf verschiedenen Abstraktionslevels beschrieben werden. Am ungenausten sind die \emph{Needs} (Was braucht der Kunde?). 
+
+Aus den \emph{Needs} können die Kundenanforderungen abgeleitet werden. Es sind problemorientierte Anforderungen (Was will der Kunde?), welche auch vom Kunden verstanden werden. Ein oder mehrere Anforderungen können zu einem \emph{feature} zusammengefasst werden und damit ein Merkmal eines Systems beschreiben.
+
+Von den Kundenanforderungen werden die präzisen und widerspruchsfreien Softwareanforderungen abgeleitet. Es sind lösungsorientierte Anforderungen für die Entwickler. Sie dienen als Grundlage für das spätere Design.
+
+Zusätzlich zu den funktionalen Anforderungen (Was soll ein Produkt tun?) existieren die nichtfunktionalen Anforderungen. Beispiele für nichtfunktionale Anforderungen sind:
+\begin{itemize}
+	\item Performanz und Effizienz
+	\item Zuverlässigkeit (Reliability) und Verfügbarkeit (Availability)
+	\item Sicherheit (Security)
+	\item Wartbarkeit (Maintainability)
+\end{itemize}
+Anforderungen sollten folgende Eigenschaften erfüllen:
+\begin{itemize}
+	\item Verständlichkeit, Klarheit
+	\item Eindeutigkeit (keine Missverständnisse)
+	\item Vollständigkeit
+	\item Konsistenz
+	\item Korrektheit
+	\item Gültigkeit (Ist Anforderung aktuell?)
+	\item Verfolgbarkeit / Traceability
+	\item Testbarkeit/Prüfbarkeit
+	\item Machbarkeit/Umsetzbarkeit
+	\item Bewertet (Prio, Aufwand, Risiko…)
+\end{itemize}
+
+\subsection{Anforderungsengineering}
+
+Anforderungen dienen als Grundlage für den Architekturentwurf. Umgekehrt werden im Architekturentwurf auch
+Erkenntnisse gewonnen, die Auswirkungen auf die Anforderungen haben (Machbarkeit, Kosten) können. In der Praxis stellen wir daher
+eine starke Wechselwirkung zwischen der Anforderungsdefinition und dem Architekturentwurf fest, wie die Abbildung \ref{fig:anforderungsengineering} darstellt.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/anforderungsengineering}
+	\caption{Zusammenhang Anforderungen und Architektur}
+	\label{fig:anforderungsengineering}
+\end{figure}
+Das Anforderungsengineering kann mit zwei Modellen durchgeführt werden. Beim ersten Modell wird das Anforderungsengineering als Projektphase durchgeführt. Mit diesem Modell können jedoch auf Anforderungen erst spät reagiert werden und der Kunde ist nicht zufrieden. Bei Modellen wir SoDa oder Scrum werden die Anforderungen kontinuierlich (just in time) erhoben. Am Anfang eines Projektes definiert man die Anforderungen nur grob und geht zusammen mit dem Kunden immer mehr ins Detail.
+
+\subsection{Anforderungs-Techniken}
+
+Anforderungen könne aus verschiedenen Quellen (Stakeholder, Dokumente usw.) und mit verschiedenen Ermittlungstechniken erhoben werden. Um diese Anforderungen festzuhalten werden folgende Techniken eingesetzt:
+\begin{description}
+	\item[Systemkontext:] Abgrenzung des Produktumfanges (Kontextdiagramm)
+	\item[Ziele:] Es werden die Intentionen der Kunden festgehalten (keine Lösungsansätze dokumentieren)
+	\item[Szenarien:] exemplarische, konkrete Abläufe festhalten (z.B. in Form von Use Cases, Szenario-Beschreibungen, User-Story)
+	\item[Geschäftsregeln:] Regeln für unternehmerische Entscheidungen z.B. in Form von Entscheidungstabellen
+	\item[Lösungsorientierte Anforderungen:] Datenstrukturen, Verhalten, Funktionssicht eines Systems, Schnittstellenbeschreibungen usw.
+\end{description}
+Mit einem Kontextdiagramm wird das System und dessen Kontext klar abgegrenzt. Typische Inhalte eines Kontextes sind Personen, technische Systeme oder Prozesse. Die Systemgrenze separiert das geplante System von seiner Umgebung (Lieferumfang). Möchte man ein Kontextdiagramm erstellen muss zuerst die Systemgrenze festgelegt werden. Danach sollte überlegt werden was alles zum Kontext gehört und die Kontextgrenze festlegen. Am Schluss wird noch der Nachrichtenfluss zwischen dem System und dem Kontext über Schnittstellen festgelegt.
+
+\subsection{Anforderungen mit Use Cases festhalten}
+
+Use Cases sind eine Technik um Anforderungen festzuhalten. In einem Use Case wird textuell eine Sequenz von Interaktion zwischen dem Benutzer und dem System beschrieben. Dieser Ablauf sollte dem Benutzer einen Nutzen bringen. Auch allfällige Sonderfälle werden beschrieben. Use Cases können überarbeitet und verfeinert werden z.B. durch Pre-/Post-Condition, alternative flows oder nichtfunktionale Anforderungen. Use Cases eignen sich gut um mit dem Kunden wichtige Abläufe durchzugehen.
+
+Sämtliche Use Cases und Benutzer eines Systems werden in einem Use Case Diagramm zusammengefasst. Mit Pfeilen kann festgelegt werden ob ein Benutzer einen Use Case auslöst oder von einem Use Case benötigt wird. Abbildung \ref{fig:use-case-diagramm} zeigt ein Use Case Diagramm.
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{fig/use-case-diagramm}
+\caption{Use Case Diagramm}
+\label{fig:use-case-diagramm}
+\end{figure}
+
+\subsection{Anforderungen textuell festhalten}
+
+Alternativ zu den Use Cases können Anforderungen auch rein textuell festgehalten werden. Eine Möglichkeit wäre die Feature-Liste. Dabei werden alle Anforderungen in einer Tabelle festgehalten und evtl. mit Priorität, Aufwand oder Risiko ergänzt. Die Features können auch detailliert werden und in Unter-Feature zerlegt werden. Eine weitere Möglichkeit Anforderungen textuell festzuhalten sind User Stories wie sie in Scrum verwendet werden. User Stories werden aus Benutzersicht geschrieben und haben immer folgendes Format:
+\begin{quote}
+	As a \emph{user role}, I need a \emph{functionality}, so that I get \emph{business value}
+\end{quote}
+Zu jeder User Story gehören Akzeptanzkriterien um die Vollständigkeit zu garantieren.
+
+\subsection{Anforderungen mit Modellen festhalten}
+
+Anforderungen lassen sich auch mit Modellen darstellen. Durch eine objektorientierte Analyse (OOA) lässt sich ein Fach- oder Domänenmodell erstellen. Dieses Modell beschreibt das Anwendungsgebiet (Domäne) der Software in der Sprache des Benutzers und fokusiert sich dabei auf die Fachobjekte (Entitäten). Dargestellt wird es beispielsweise in UML oder wie in Abbildung \ref{fig:komisches-modell-ohne-namen}.
+\begin{figure}
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\linewidth]{fig/komisches-modell-ohne-namen-1}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\includegraphics[width=\linewidth]{fig/komisches-modell-ohne-namen-2}
+	\end{subfigure}
+	\caption{Komisches Modell ohne Namen}
+	\label{fig:komisches-modell-ohne-namen}
+\end{figure}
+Für dynamische Anforderungen können Sequenzdiagramme verwendet werden. Diese Modelle beschreiben Anforderungen und keine Lösungen.
+
+\subsection{Prototypen}
+
+Prototypen werden zu verschiedenen Zwecken erstellt:
+\begin{itemize}
+	\item Experimenteller Prototyp: zur Beurteilung bestimmter Problemlösungen. Ziel ist es nachzuweisen, dass Spezifikationen oder Ideen tauglich sind.
+	\item Prototyp als Teil der Produkt-Definition (GUI-Protoyp).
+	\item Evolutionäres Prototyping: Der Prototyp ist funktionsfähig und wird bis zur Produktreife weiterentwickelt (Scrum). 
+\end{itemize}
+Es gibt zwei Typen von Prototypen:
+\begin{description}
+	\item[Vertikale Prototypen:] Es werden nur bestimmte Funktionen über alle Layers getestet (Machbarkeit)
+	\item[Horizontale Prototypen:] Es wird nur von einem Layer ein Prototyp erstellt (z.B. GUI)
+\end{description}
+Durch Prototypen ergeben sich folgende Vor-/Nachteile:
+\begin{itemize}
+	\item[+] Reduktion der Entwicklungsrisiken
+	\item[+] Kreativität, neue Lösungsansätze
+	\item[+] GUI-Prototyp: Ideal für die Diskussion mit Kunde
+	\item[--] Kosten
+	\item[--] Illusion nach Aussen: Projekt bereits fertig
+\end{itemize}
+
+\subsection{Dokumentation von Anforderungen}
+
+Da Anforderungsdokumente als Grundlage für die Projektplanung, Kostenschätzung, Implementierung, Testen usw. dienen, müssen sie gewissen Qualitätskriterien erfüllen. Diese Kriterien sind nachfolgend aufgelistet:
+\begin{itemize}
+	\item Eindeutigkeit und Konsistenz
+	\item Klare Struktur
+	\item Erweiterbarkeit
+	\item Vollständigkeit
+	\item Verfolgbarkeit (Traceability) der Beziehungen unterschiedlicher Dokumente (inkl. Code)
+\end{itemize}
+Um diese Kriterien zu erfüllen wurden verschiedene Normen und Empfehlungen erstellt. Bei der DIN-Norm wird vom Kunden ein Lastenheft und vom Lieferant ein Pflichtenheft verlangt. Auch das IEEE stellt mit der SRS 830 eine Dokumentenvorlage für Anforderungen zur Verfügung.
+
+\subsection{Anforderungen verwalten}
+
+Um Anforderungen besser verwalten zu können sollten folgende Punkte beachtet werden:
+\begin{itemize}
+	\item Priorisierung
+	\item Verfolgbarkeit (Traceability), die Fähigkeit eine Anforderung über den gesamten Lebenszyklus des Systems hinweg zu verfolgen (Dokumente und Code)
+	\item Verwaltung von Anforderungsänderungen
+	\item Anforderungen mit Attributen versehen (ID, Name, Beschreibung, Version, Autor, Quelle, Priorität, Kritikalität) 
+\end{itemize}
+
 \section{Planung}
 
 \section{Modellieren}
