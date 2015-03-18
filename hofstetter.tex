@@ -74,7 +74,22 @@ Alternativ zu den Use Cases können Anforderungen auch rein textuell festgehalte
 \begin{quote}
 	As a \emph{user role}, I need a \emph{functionality}, so that I get \emph{business value}
 \end{quote}
-Zu jeder User Story gehören Akzeptanzkriterien um die Vollständigkeit zu garantieren.
+Zu jeder User Story gehören Akzeptanzkriterien um die Vollständigkeit zu garantieren. Gute User Stories sind INVEST:
+\begin{tabbing}
+	\hspace{3cm}\=\kill
+	\textbf{I}ndependent: \> möglichst unabhängig voneinander \\
+	\textbf{N}egotiable: \> zerlegbar, komponierbar, änderbar, verhandelbar \\
+	\textbf{V}aluable: \> hat wirtschaftlichen Wert \\
+	\textbf{E}stimatable: \> so klar, dass es vom Team geschätzt werden kann \\
+	\textbf{S}mall: \> klein genug, um in einem Sprint entwickelt werden zu können \\
+	\textbf{T}estable: \> klare Akzeptanzkriterien 
+\end{tabbing}
+User Stories lassen sich auf drei Arten zerlegen (detaillieren):
+\begin{enumerate}
+	\item Nach Daten
+	\item Nach Benutzer/Rollen
+	\item Nach Prozessschritten
+\end{enumerate}
 
 \subsection{Anforderungen mit Modellen festhalten}
 
@@ -137,5 +152,38 @@ Um Anforderungen besser verwalten zu können sollten folgende Punkte beachtet we
 \end{itemize}
 
 \section{Planung}
+
+\subsection{Rahmenplan}
+
+Der Rahmenplan wird in der Initialisierungsphase erstellt und die Meilensteine definiert. Ein grosses Risiko in einem Projekt stellen neue Technologien dar. Deshalb sollten diese möglichst früh mit einem Prototypen überprüft werden
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{fig/rahmenplan}
+\caption{Rahmenplan SODA}
+\label{fig:rahmenplan}
+\end{figure}
+
+Ein Meilenstein ist eine Verknüpfung von messbaren Ergebnissen zu einem definierten Zeitpunkt. Meilensteine dienen der Überwachung des Projektes und dem Einleiten von notwendigen Massnahmen. Wird folglich ein Meilenstein nicht erreicht muss man sich über einen Projektabbruch Gedanken machen.
+
+\subsection{Scrum}
+
+Der Inhalt eines Sprints plant man definitiv bevor man den Sprint beginnt. Der übernächste Sprint wird grob geplant. Ein Sprint enthält typischerweise drei bis sechs Userstories. Das Resultat eine Sprints muss ein \emph{potentially shippable product} sein. Das heisst die Software entspricht den Anforderungen und ist getestet. Zudem ist die Software integriert und funktioniert auf einer realitätsnahen Umgebung. Stories sollten primär neue Funktionen beschreiben. Unterstützungstätigkeiten (Konzepte, Tests, Dokumente usw.) sollten als Tasks innerhalb der Stories definiert werden.
+
+Der Product Owner ist verantwortlich für das Produkt. Er ist die Schnittstelle zum Kunden und erstellt aufgrund dessen die Anforderungen. Da er auch für den wirtschaftlichen Erfolg des Produktes verantwortlich ist, misst er den Projektfortschritt und führt die Akzeptanztests durch. Zudem priorisiert er die Anforderungen aus dem Backlog und definiert mit dem Team die Sprintinhalte.
+
+Der Product Backlog ist eine geordnete Liste mit allem, was in dem Produkt benötigt werden könnte. Er ist die einzige Quelle für Anforderungen. Er enthält zudem unkritische Bugs (kritische in Sprint Backlog) und Spikes (Forschungsaufträge). Ein guter Backlog ist \textbf{DEEP}:
+\begin{itemize}
+	\item \textbf{D}etailed Apropriately (angemessen Detailliert)
+	\item \textbf{E}stimated (Geschätzt)
+	\item \textbf{E}mergent (Entwickelt sich, wird gepflegt)
+	\item \textbf{P}rioritized (Priorisiert)
+\end{itemize}
+Der Product Backlog besteht aus Backlog-Items. Zu jedem Backlog-Item gehören Akzeptanzkriterien. Ein Backlog-Item kann ein Epic, eine User Story oder ein sonstiges Work Item sein (Bugs, Spikes, Doku oder Infrastruktur). Der Sprint Backlog enthält für jeden öffentlich alle Anforderungen, Tasks und kritische Fehler für den Sprint.
+
+Ein Sprint gliedert sich in eine Sprint Planung, der Sprint Durchführung und dem Sprint Abschluss. 
+Bei der Sprint Planung stellt der Product Owner das Sprint-Ziel und wichtige Anforderungen vor. Das Team wählt und schätzt die Anforderungen zusammen mit dem Product Owner. Danach plant das Team die einzelnen Task der Anforderungen. Die Planung darf jedoch nicht überhand nehmen.
+Bei der Sprint Durchführung arbeitet das Team Tasks aus dem Sprint Backlog ab. Fertige Anforderungen werden zur Kontrolle auf dem Burn-Down Chart vermerkt. Der Produkt Qwner nimmt die fertigen Anforderungen ab. 
+Der Sprint Abschluss wird zusätzlich noch in einen Sprint Review und einer Retrospektive unterteilt. Der Sprint Review ist eine öffentliche Veranstaltung auch für den Kunden. Die fertige Anforderungen werden vorgeführt. Bei der Retrospektive reflektiert das Team den letzten Sprint. Gutes wird beibehalten und Probleme werden behoben.
 
 \section{Modellieren}
