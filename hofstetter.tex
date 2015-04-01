@@ -2,11 +2,17 @@
 
 \section{Anforderungen}
 
+\subsection{Begriffe}
+\begin{itemize}
+	\item Anforderungen: Wünsche, Ziele und Vorgaben von Benutzer an ein System. Bedingungen und Eigenschaften des zu entwickelnden Systems.
+	\item Stakeholder: Person oder Organisation die Einfluss auf die Anforderungen hat. (Bspw: Kunde, Vorschriften, Gesetze)
+\end{itemize}
+
 \subsection{Einführung}
 
-Anforderungen können auf verschiedenen Abstraktionslevels beschrieben werden. Am ungenausten sind die \emph{Needs} (Was braucht der Kunde?). 
+Anforderungen können auf verschiedenen Abstraktionslevels beschrieben werden. Am ungenausten sind die \emph{Needs} (Was braucht der Kunde?).
 
-Aus den \emph{Needs} können die Kundenanforderungen abgeleitet werden. Es sind problemorientierte Anforderungen (Was will der Kunde?), welche auch vom Kunden verstanden werden. Ein oder mehrere Anforderungen können zu einem \emph{feature} zusammengefasst werden und damit ein Merkmal eines Systems beschreiben.
+Aus den \emph{Needs} können die Kundenanforderungen abgeleitet werden. Es sind problemorientierte Anforderungen (Was will der Kunde?), welche auch vom Kunden verstanden werden. Ein \emph{Feature} ist ein Merkmal eines Systems, welches ein oder mehrere Anforderungselemente betrifft.
 
 Von den Kundenanforderungen werden die präzisen und widerspruchsfreien Softwareanforderungen abgeleitet. Es sind lösungsorientierte Anforderungen für die Entwickler. Sie dienen als Grundlage für das spätere Design.
 
@@ -26,9 +32,9 @@ Anforderungen sollten folgende Eigenschaften erfüllen:
 	\item Korrektheit
 	\item Gültigkeit (Ist Anforderung aktuell?)
 	\item Verfolgbarkeit / Traceability
-	\item Testbarkeit/Prüfbarkeit
-	\item Machbarkeit/Umsetzbarkeit
-	\item Bewertet (Prio, Aufwand, Risiko…)
+	\item Testbarkeit / Prüfbarkeit
+	\item Machbarkeit / Umsetzbarkeit
+	\item Bewertet (Prio, Aufwand, Risiko, …)
 \end{itemize}
 
 \subsection{Anforderungsengineering}
@@ -42,7 +48,7 @@ eine starke Wechselwirkung zwischen der Anforderungsdefinition und dem Architekt
 	\caption{Zusammenhang Anforderungen und Architektur}
 	\label{fig:anforderungsengineering}
 \end{figure}
-Das Anforderungsengineering kann mit zwei Modellen durchgeführt werden. Beim ersten Modell wird das Anforderungsengineering als Projektphase durchgeführt. Mit diesem Modell können jedoch auf Anforderungen erst spät reagiert werden und der Kunde ist nicht zufrieden. Bei Modellen wir SoDa oder Scrum werden die Anforderungen kontinuierlich (just in time) erhoben. Am Anfang eines Projektes definiert man die Anforderungen nur grob und geht zusammen mit dem Kunden immer mehr ins Detail.
+Das Anforderungsengineering kann mit zwei Vorgehens-Modellen durchgeführt werden. Beim ersten Modell wird das Anforderungsengineering als Projektphase durchgeführt. Dabei kann jedoch auf Anforderungs-Änderung erst spät reagiert werden und der Kunde ist nicht zufrieden. Bei Modellen wie SoDa oder Scrum werden die Anforderungen kontinuierlich (just in time) erhoben. Am Anfang eines Projektes definiert man die Anforderungen nur grob und geht zusammen mit dem Kunden immer mehr ins Detail.
 
 \subsection{Anforderungs-Techniken}
 
@@ -54,11 +60,11 @@ Anforderungen könne aus verschiedenen Quellen (Stakeholder, Dokumente usw.) und
 	\item[Geschäftsregeln:] Regeln für unternehmerische Entscheidungen z.B. in Form von Entscheidungstabellen
 	\item[Lösungsorientierte Anforderungen:] Datenstrukturen, Verhalten, Funktionssicht eines Systems, Schnittstellenbeschreibungen usw.
 \end{description}
-Mit einem Kontextdiagramm wird das System und dessen Kontext klar abgegrenzt. Typische Inhalte eines Kontextes sind Personen, technische Systeme oder Prozesse. Die Systemgrenze separiert das geplante System von seiner Umgebung (Lieferumfang). Möchte man ein Kontextdiagramm erstellen muss zuerst die Systemgrenze festgelegt werden. Danach sollte überlegt werden was alles zum Kontext gehört und die Kontextgrenze festlegen. Am Schluss wird noch der Nachrichtenfluss zwischen dem System und dem Kontext über Schnittstellen festgelegt.
+Mit einem Kontextdiagramm wird das System und dessen Kontext klar abgegrenzt. Typische Inhalte eines Kontextes sind Personen, technische Systeme oder Prozesse. Die Systemgrenze separiert das geplante System von seiner Umgebung (Lieferumfang). Möchte man ein Kontextdiagramm erstellen muss zuerst die Systemgrenze festgelegt werden. Danach sollte überlegt werden was alles zum Kontext gehört um anschliessend die Kontextgrenze festlegen zu können. Am Schluss wird noch der Nachrichtenfluss zwischen dem System und dem Kontext über Schnittstellen festgelegt. Es geht darum auch aufzuzeigen was nicht Teil des zu entwickelnden Systems ist (Definition des Lieferumfangs)!
 
 \subsection{Anforderungen mit Use Cases festhalten}
 
-Use Cases sind eine Technik um Anforderungen festzuhalten. In einem Use Case wird textuell eine Sequenz von Interaktion zwischen dem Benutzer und dem System beschrieben. Dieser Ablauf sollte dem Benutzer einen Nutzen bringen. Auch allfällige Sonderfälle werden beschrieben. Use Cases können überarbeitet und verfeinert werden z.B. durch Pre-/Post-Condition, alternative flows oder nichtfunktionale Anforderungen. Use Cases eignen sich gut um mit dem Kunden wichtige Abläufe durchzugehen.
+Use Cases sind eine Technik um Anforderungen festzuhalten. In einem Use Case wird textuell eine Sequenz von Interaktion zwischen dem Benutzer und dem System beschrieben (als Text oder als Flussdiagramm). Dieser Ablauf sollte dem Benutzer einen Nutzen bringen. Auch allfällige Sonderfälle werden beschrieben. Use Cases können überarbeitet und verfeinert werden z.B. durch Pre-/Post-Condition, alternative flows oder nichtfunktionale Anforderungen. Use Cases eignen sich gut um mit dem Kunden wichtige Abläufe durchzugehen.
 
 Sämtliche Use Cases und Benutzer eines Systems werden in einem Use Case Diagramm zusammengefasst. Mit Pfeilen kann festgelegt werden ob ein Benutzer einen Use Case auslöst oder von einem Use Case benötigt wird. Abbildung \ref{fig:use-case-diagramm} zeigt ein Use Case Diagramm.
 \begin{figure}
@@ -150,6 +156,9 @@ Um Anforderungen besser verwalten zu können sollten folgende Punkte beachtet we
 	\item Verwaltung von Anforderungsänderungen
 	\item Anforderungen mit Attributen versehen (ID, Name, Beschreibung, Version, Autor, Quelle, Priorität, Kritikalität) 
 \end{itemize}
+
+\subsection{Use Case vs. User Story}
+Ersetzt das eine das andere? Nein. Es sind zwei unterschiedliche Dinge. Use Case werden detailliert beschrieben und sind eher schwergewichtige Dokumentationsinstrumente wohingegen User Story eher zur Besprechung dienen und auch als leichtgewichtige Planungsinstrumente dienen. Prominente Methodiker wie Martin Fowler gehen davon aus, dass es zwei verschiedene Instrumente sind, welche sich ergänzen können. Quelle: http://blog.hood-group.com/blog/2013/05/15/use-cases-und-user-stories-verbundete-oder-feinde/
 
 \section{Planung}
 
