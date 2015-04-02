@@ -173,7 +173,7 @@ Der Rahmenplan wird in der Initialisierungsphase erstellt und die Meilensteine d
 \label{fig:rahmenplan}
 \end{figure}
 
-Ein Meilenstein ist eine Verknüpfung von messbaren Ergebnissen zu einem definierten Zeitpunkt. Meilensteine dienen der Überwachung des Projektes und dem Einleiten von notwendigen Massnahmen. Wird folglich ein Meilenstein nicht erreicht muss man sich über einen Projektabbruch Gedanken machen.
+Ein Meilenstein ist eine Verknüpfung von messbaren Ergebnissen zu einem definierten Zeitpunkt. Meilensteine dienen der Überwachung des Projektes und dem Einleiten von notwendigen Massnahmen. Wird folglich ein Meilenstein nicht erreicht, muss man sich über einen Projektabbruch Gedanken machen.
 
 \subsection{Scrum}
 
@@ -193,6 +193,133 @@ Der Product Backlog besteht aus Backlog-Items. Zu jedem Backlog-Item gehören Ak
 Ein Sprint gliedert sich in eine Sprint Planung, der Sprint Durchführung und dem Sprint Abschluss. 
 Bei der Sprint Planung stellt der Product Owner das Sprint-Ziel und wichtige Anforderungen vor. Das Team wählt und schätzt die Anforderungen zusammen mit dem Product Owner. Danach plant das Team die einzelnen Task der Anforderungen. Die Planung darf jedoch nicht überhand nehmen.
 Bei der Sprint Durchführung arbeitet das Team Tasks aus dem Sprint Backlog ab. Fertige Anforderungen werden zur Kontrolle auf dem Burn-Down Chart vermerkt. Der Produkt Qwner nimmt die fertigen Anforderungen ab. 
-Der Sprint Abschluss wird zusätzlich noch in einen Sprint Review und einer Retrospektive unterteilt. Der Sprint Review ist eine öffentliche Veranstaltung auch für den Kunden. Die fertige Anforderungen werden vorgeführt. Bei der Retrospektive reflektiert das Team den letzten Sprint. Gutes wird beibehalten und Probleme werden behoben.
+Der Sprint Abschluss wird zusätzlich noch in einen Sprint Review und einer Retrospektive unterteilt. Der Sprint Review ist eine öffentliche Veranstaltung auch für den Kunden. Am besten lädt man den Kunden direkt ein zum Sprint Review. Die fertige Anforderungen werden vorgeführt. Bei der Retrospektive reflektiert das Team den letzten Sprint. Gutes wird beibehalten und Probleme werden behoben.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/scrum-lifecycle}
+\caption{Scrum Lifecycle}
+\label{fig:scrum-lifecycle}
+\end{figure}
+
+\textbf{Scrum Master:} Ist einer der drei Kernrollen in Scrum. Er wacht darüber, dass die Scrum Regeln eingehalten werden. Ausserdem schaut ein guter Scrum Master zu seinem Team - er motiviert es, erwägt Alternativen oder überdenkt Prioritäten. Aber am wichtigsten ist, dass er sich um die Dinge kümmert, welche das Team davon abhalten optimal zu arbeiten.
+
+\textbf{Definition of Done (DoD):} Ist ein Scrum-Artefakt, welches beschreibt, wann eine Arbeit erledigt ist. Diese DoD lebt und wird sich im Verlauf des Projektes erweitern und dies in der Regel in der Sprint Retro. Die DoD kann sich auf unterschiedliche Dinge beziehen. Auf Backlog-Items, auf gewisse Tasks usw. Beispiel einer DoD:
+
+\begin{itemize}
+	\item Dokumentation aktualisiert (SysSpec).
+	\item Code ist implementiert und auf der DEV Umgebung integriert.
+	\item Code wurde durch einen zweiten Entwicklicker reviewed.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/backlogitems}
+\caption{Backlogitems}
+\label{fig:backlogitems}
+\end{figure}
 
 \section{Modellieren}
+Modellieren ist eine wichtige Tätigkeit. Man modelliert aus mehreren Gründen: Dokumentation, Verständnis- und Konsensbildung oder gesetzliche Vorgaben.
+
+Es ist stets darauf zu Achten, dass man die richtige Flughöhe besitzt. Man spricht von \emph{Level of abstraction}. Zu Projektbeginn interessiert es niemanden, ob die Toilette im WC gelb oder grün wird. 
+
+Oft ist das Modelliert ungleich dem Implementierten. Darauf sollte man immer bedacht sein und vorab vielleicht mal zuerst die Implementierung anschauen. Und in einem Konsistenzcheck eine Soll und Ist Gegenüberstellung machen.
+
+\subsection{Begriffe}
+\begin{itemize}
+	\item \textbf{Modell} Ein Modell ist eine Abstraktion (Vereinfachung).
+	\item \textbf{Diagramm} Möglichkeit ein Modell aus unterschiedlichen Sichten grafisch darzustellen.
+\end{itemize}
+
+\subsection{Modell-Typen}
+Grundsätzlich unterscheidet man zwischen statischen und dynamischen Modellen. Ein statisches Modell beschreibt die Struktur, den Aufbau eines Systems (Uses-Beziehungen, part-of Zerlegung, Layer und Schichten, Verteilung)). Ein dynamisches Modell beschreibt wie das System interagiert, wie es lebt  (Daten- und Kontroll-Fluss, ausführbare Einheiten, Parallelität).
+
+Man modelliert auf unterschiedlichen Ebenen. Auf der Konzept-Ebene geht es dabei um Analyse und Anforderungen. Auf der Ebene der Architektur will man die Komponenten-Beziehungen und Layer aufzeigen. Und auf Implementations-Ebene modelliert man den Code. Siehe dazu Abbildung \ref{fig:modelltypen}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/modelltypen}
+\caption{Modell-Typen}
+\label{fig:modelltypen}
+\end{figure}
+
+\subsection{Datenfluss vs. Kontrollfluss}
+Der Kontrollfluss bezieht sich auf die zeitliche Abfolge der einzelnen Befehle. Der Datenfluss konzentriert sich auf die zeitliche Abfolge des Datenaustausches. Beide sind grundsätzlich gerichtet. Bsp: Datenfluss- und Kontrollfluss können in einer Aktion auch unterschiedliche Richtungen haben. Denke dabei an eine Getter-Methode wie int getZahl().
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/uml-datenfluss}
+	\caption{UML Datenfluss}
+	\label{fig:uml-datenfluss}
+\end{figure}
+
+\subsection{Architektursichten (Views)}
+\begin{itemize}
+	\item \textbf{Funktionale- / Konzeptionelle Sicht} Zerlegung in einzelne Komponente. Diagramme: Blockdiagramm, Komponentendiagramm 
+	\item \textbf{Entwicklungs-Sicht} Statische Modul-Strukturen. Diagramme: Klassen- und Paketdiagramm. 
+	\item \textbf{Verteilungs- / Betriebssicht} Zuordnung von Komponenten/Module zu physikalischen Ressourcen. Beschreibt wie das System administriert, betrieben und unterhalten wird. Diagramm: Verteilungsdiagramm
+	\item \textbf{Datenstrukten} Konzeptionelle Datenstrukturen. Diagramme: Analyse-Modell, ERM. 
+\end{itemize}
+
+Beispiel eines funktionalen Blockdiagramm:
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.8\linewidth]{fig/funktionales-blockdiagramm}
+\caption{Funktionales Blockdiagramm}
+\label{fig:funktionales-blockdiagramm}
+\end{figure}
+
+\subsection{Abhängigkeiten}
+Eines der schwierigsten Themen der Informatik. Das Ziel ist immer eine möglichst lose Kopplung. Das erreicht man damit, dass man die Anzahl an Abhängigkeiten gering hält und allfällige Abhängigkeiten mit schwachen Formen umsetzt. Falls Klasse A von Klasse B abhängig ist, zeichnet man einen gestrichelten Pfeil von A nach B.
+
+\begin{itemize}
+	\item \textbf{Class Dependency} Klasse A nutzt Klasse B.
+	\item \textbf{Interface Dependency} Klasse A nutzt keinen konkrete Klasse B sondern den Interface-Typ der Klasse B (schwächere Kopplung).
+	\item \textbf{Compile-Time / Runtime-Depedency} Klasse A benötigt zur Kompliation ein Interface-Typ, die konkrete Implementierung wird erst zur Runtime relevant.
+	\item \textbf{Indirect Dependency} Klasse A nutzt Klasse B. Klasse B nutzt Klasse C. Klasse A ist indirekt abhängig von Klasse C. (Auch bekannt als transitive Abhängigkeit).
+\end{itemize}
+
+\subsection{Assoziation}
+Eine spezielle Form der Abhängigkeit. Klasse A hat eine Assoziation zur Klasse B, wenn A eine Membervariabel hält mit dem Typ von B. Man zeichnet von A nach B eine durchgezogene Linie.
+
+\subsection{Paketdiagramme}
+Pakete sind Ansammlungen von irgendwelchen Modellelementen. Mittels Paketen wird ein komplexes System in kleinere, überblickbare Einheiten gegliedert. Ein bestimmtes Modellelement gehört genau zu einem Paket.
+
+\subsection{Zyklische Abhängigkeiten}
+Wenn A von B abhängig ist und B von A. Oder wenn A von B und B von C und C wiederum von A. Dann haben wir Zyklen. Das erhöht die Kopplung des System und ist schlecht wartbar. Zyklen konnen oft mittels eines dritten vermieden werden. Der Dritte entkoppelt die beiden voneinander. In Java wird oft das Observer-Pattern eingesetzt.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/observer-pattern}
+\caption{Observer-Pattern}
+\label{fig:observer-pattern}
+\end{figure}
+
+\subsection{Weitere Modellierungen}
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/layer-modellierung}
+\caption{Layer-Modellierung}
+\label{fig:layer-modellierung}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/interface-uml}
+\caption{Interface in UML}
+\label{fig:interface-uml}
+\end{figure}
+
+\subsection{Software Architektur Dokument}
+SAD nach Pavlo Baron. In einem SAD werden Topics (protokollierte Architekturentscheide) und Sichten (unterschiedliche Brillen auf die Architektur) beschrieben. 
+Ein Topic beinhaltet folgendes:
+
+\begin{itemize}
+	\item Zusammenfassung der Lösung
+	\item Betroffene, relevante bzw. erfüllte Architekturfaktoren
+	\item Lösung selbst, was wurde entschieden?
+	\item Motivation: Warum wurde etwas entschieden?
+	\item Ungelöste Punkte
+	\item Betrachtete Alternativen, und warum diese verworfen wurden.
+\end{itemize}
