@@ -5,14 +5,12 @@ Persistenz stammt aus dem lateinischen \emph{persistere} und steht für das lang
 
 \subsection{Modellierung}
 Die Datenmodellierung erfolgt auf drei Ebenen. Konzeption, Implementation und physischer Entwurf. In DMG haben wir den konzeptionellen Entwurf mittels ERM gemacht. In APPE lernen wir, dass dieser nicht Praxis tauglich ist und verwenden nun UML-Klassendiagramme (siehe Abbildung \ref{fig:konzeptionelles-datenmodell-mit-klassendiagram}).
-
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{fig/konzeptionelles-datenmodell-mit-klassendiagram}
 \caption{Konzeptionelles Datenmodell mit UML Klassendiagrammen}
 \label{fig:konzeptionelles-datenmodell-mit-klassendiagram}
 \end{figure}
-
 Nach der Konzeption folgt die Implementation. Der konzeptionelle Entwurf ist vollständig unabhängig von der konkreten Datenbank. Nun kann das konzeptionelle Modell für eine konkrete Datenbank transformiert werden. Bisher wählten wir immer relationale Datenbanken.
 Ein Beispiel dafür sehen wir in Abbildung \ref{fig:relationales-datenmodell}.
 
@@ -37,20 +35,20 @@ Und hier müssen wir ein ORM durchführen. ORM steht für objekt-relationales Ma
 \end{figure}
 
 Folgendes sind Schlüsselelemente in JPA:
-\begin{itemize}
-	\item Entity: Java-Klasse, welche für eine Tabelle steht.
-	\item Annotation: Definitionen für das OR Mapping. Man kann auch das gesammte Mapping in XML Files definieren, aber eher Old-School und nicht fresh Surfer-like.
-	\item EntityManager: Klasse um auf die Entities zuzugreifen.
-	\item Persistence Unit: Konfiguration für DB-Verbindung, DB Treiber und weiteres.
-	\item JPQL: Java Persistence Query Language. Objektorienterte Abfragesprache. Abstrahiert SQL vollumfänglich!
-\end{itemize}
+\begin{description}
+	\item[Entity:] Java-Klasse, welche für eine Tabelle steht.
+	\item[Annotation:] Definitionen für das OR Mapping (Beginnen mit @). Man kann auch das gesamte Mapping in XML Files definieren, aber eher Old-School und nicht fresh Surfer-like.
+	\item[EntityManager:] Klasse um auf die Entities zuzugreifen.
+	\item[Persistence Unit:] Konfiguration für DB-Verbindung, DB Treiber usw.
+	\item[JPQL:] Java Persistence Query Language. Objektorienterte Abfragesprache. Abstrahiert SQL voll umfänglich!
+\end{description}
 
 \subsubsection{Vorgehen}
-Entweder macht man die Datenbank zuerst und generiert die Entities daraus. Oder man implementiert die Entities und generiert das DDL. Christens Approach ist, dass man das DDL selber schreibt und die Entities daraus generiert. Wir gehen auch so vor. Es ist extrem wichtig, dass das Datenmodell korrekt ist und wir wollen hier uns nicht auf irgendwelche Tools verlassen. Ich will genau definieren wie die Zusammenhänge sind. Ausserdem will ich Herr sein über die Attribute in welcher Domäne mit welcher Konfiguration sie stecken. Anschliessend kann man die Entities generieren - man muss sich das Mapping danach nochmals anschauen!
-Um die bestimmten Objekte zu generieren, gibt es verschiedene Tools. Die IDEs wie Eclipse oder Netbeans besitzen solche Tools.
+Entweder definiert man die Datenbanktabellen zuerst und generiert daraus die Entities oder man implementiert die Entities und generiert daraus die Datenbanktabellen. Christens Approach ist, dass man das Schema selber schreibt und die Entities daraus generiert. Wir gehen auch so vor. Es ist extrem wichtig, dass das Datenmodell korrekt ist und wir wollen hier uns nicht auf irgendwelche Tools verlassen. Ich will genau definieren wie die Zusammenhänge sind. Ausserdem will ich Herr sein über die Attribute in welcher Domäne mit welcher Konfiguration sie stecken. Anschliessend kann man die Entities generieren - man muss sich das Mapping danach nochmals anschauen!
+Um die bestimmten Objekte zu generieren, gibt es verschiedene Tools. Die moderne IDEs besitzen solche Tools.
 
 \subsubsection{Coding}
-Hier ein Beispiel wie man das JPA verwendet siehe Abbildung \ref{fig:sample-jpa-code}. Die EntityManagerFactory ist teuer und sollte pro Run nur einmal instanziiert werden. Der EntityManager (not threadsafe), welcher man daraus holen kann ist leichtgewichtig und kann quasi pro Request erzeugt und wieder verworfen werden. P.S: Das ist genau das was in JavaEE passiert. Der EntityManager wird injected und zwar pro Request. Die EntityManagerFactory wird bei Applikationsstart erzeugt. Im Beispiel sehen wir auch, dass die Transaktionen manuell gestartet und geschlossen werden. In JavaEE wird das in der Regel vom Container übernommen. 
+Abbildung \ref{fig:sample-jpa-code} zeigt ein Beispiel wie man das JPA verwendet. Die \texttt{EntityManagerFactory} ist teuer und sollte pro Run nur einmal instantiiert werden. Der \texttt{EntityManager} (not threadsafe), welcher man daraus holen kann ist leichtgewichtig und kann quasi pro Request erzeugt und wieder verworfen werden. P.S: Das ist genau das was in JavaEE passiert. Der EntityManager wird injected und zwar pro Request. Die EntityManagerFactory wird bei Applikationsstart erzeugt. Im Beispiel sehen wir auch, dass die Transaktionen manuell gestartet und geschlossen werden. In JavaEE wird das in der Regel vom Container übernommen. 
 
 \begin{figure}[h!]
 \centering
@@ -77,7 +75,7 @@ Dient um die Objekte mit einer objektorientierten Sprache abzufragen (siehe Abbi
 \end{figure}
 
 \subsection{Caching}
-Achtung der EntiyManager cached! Wenn ich die Liste aller Studenten eines Professors lade, anschliessend einen Student lösche und nochmals diesselbe Liste lade, können wieder dieseleben Entities daherkommen. Man kann die Liste mittels em.refresh(List<?> list) aktualisieren. Oder Den Cache des EM mittels evictAll() löschen. Oder das Entity manuell aus der Liste löschen oder Framework Features verwenden wie \emph{orphanRemoval=true}.
+Achtung der EntiyManager cached! Wenn ich die Liste aller Studenten eines Professors lade, anschliessend einen Student lösche und nochmals dieselbe Liste lade, können wieder dieselben Entities daherkommen. Man kann die Liste mittels em.refresh(List<?> list) aktualisieren. Oder Den Cache des EM mittels evictAll() löschen. Oder das Entity manuell aus der Liste löschen oder Framework Features verwenden wie \emph{orphanRemoval=true}.
 
 
 
