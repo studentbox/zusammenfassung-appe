@@ -141,8 +141,68 @@ Dies ist ein Designmuster mit dem Ziel Datemodell von seiner Darstellung und der
 \label{fig:mvc-web-2}
 \end{figure}
 
+MVC Pattern ist fundamental im SW-Design. Modelle sind meist sehr stabil und bieten hohe Kohäsion und lose Kopplung. Pro Modell können verschiedene Views existieren. Die Wiederverwendung von Controller ist jedoch sehr gering, da oft hoch spezialisiert. Controller agieren als Leim zwischen View und Modell.
 
+\paragraph{Alternativen} Es gibt weitere Varianten wie MVP von IBM, Taligent, Martin Fowler. Grundsätzlich will man View unabhängiger vom Modell gestalten. Mehr Potential beim Testen!
+
+\section{Implementation der Business Logik}
+Es muss wie immer gut Wartbar und Erweiterbar sein, hohe Wiederverwendung haben. Einfache Integration verschiedener Technologien, möglichst hohe Technologieunabhängigkeit. Einfacher Zugriff auf 
+
+\subsection{Domain Logic Pattern: Transaction Script}
+Strukturiert Geschäftslogik in einzelne in sich abgeschlossene Funktionen. Transaktion im Sinne von ''logical unit of work''.
+
+Klassisches EVA-Prinzip. Alte Idee mit Ursprung in Hostsystemen mit Terminals (Host-Transaktionen). Sehr starke Kopplung zu Präenstation und Datenbank. Hohe Spezialisierung, schlechte Austauschbarkeit. Gute Performance, weil minimaler Overhead. Für kleine Systeme, einfach und schnelle Implementation. Für grosse - schlechte wartbarkeit, viel Redundanz, keine Wiederverwendung -> Nein!
+
+\subsection{Domain Logic Pattern: Table Module}
+Pro Entität (Tabelle) eine Klasse, welche die Businesslogik für alle Tupel enthält. Arbeitet so effizient mit ganzen Tupelmengen. Direkte Datenweitergaben an Präsentation möglich. Logisches Beispiel: Singleton Klasse Artikel mit CRUD-Operationen. Technisches Beispiel: Java Klasse, welche mit ResultSet arbeitet.
+
+Hat den Ursprung in der zwei Schichten Architektur. Sehr starke Kopplung an DB. Für Systeme mit wenig oder einfacher Businesslogik. Für grosse Systeme ungeeignet. Für Businessprozesse, welche mehrere Entitäten betreffen drohen Redundanzen und mit grossen Datenmengen kann es kollabieren.
+
+\subsection{Domain Logic Pattern: Domain Model}
+Abstraktion der Geschäftsprozesse und Geschäftsdaten. Reines objektorientiertes Modell der Domäne. Vollständige Trennung von der physischen Datenspeicherung. Interaktion zwischen den Objekten. Logisches Beispiel: \textbf{Artikel} beschreibt einen konkreten Artikel, welches einem Lager zugeordnet ist. \textbf{Lager} beschreibt ein Lager in welchem Artikel sind. Hat die Fähigkeit zu reservieren, zu beziehen usw.
+Technisches Beispiel: EJBs oder DomainModel mit POJOs.
+
+Realisiert praktisch alle Vorteile einer logischen 3-Schichten Architektur. Entkopplung von der Präsentation und Datenspeicherung, hohe Wiederverwendung, gute Wart- und Erweiterbarkeit. Starke Strukturen, leichtes Verständnis. Skaliert auch für sehr grosse und komplexe Enterprise Systeme.
+O/R-Mapping verursacht jedoch einen gewissen Overhead. Effizienter Datenaustausch zwischen Schichten ist eine Herauserforderung.
+
+\subsection{Domain Logic Pattern: Service Layer}
+Optimale Ergänzung zu einem beliebigen Domain Logic Pattern. Verschiedene Clients benötigen sehr unterschiedliche Schnittstellen.
+
+\begin{itemize}
+	\item Interaktive Anwendung (GUI)
+	\item Batchorientierte Verarbeitung
+	\item Datenimport / -export / Synchronisierung
+\end{itemize}
+
+Lösung: Man bietet übergeordnete Services an, welche die Businesslogik erneut kapseln. Grundlage eines Service Oriented Architecture (SOA) und eines Enterprise Service Bus (ESB). Technisches Beispiel: Webservice (Wrappen bestehende Businessfunktionalitäten)
+
+\subsection{Auswahl des geeigneten Patterns}
+Es kommt auf die Grösse und Komplexität des gesamten Systems an. Weitere wichtigte Aspekte sind Lebensdauer, einzelne Geschäftsprozesse.
+
+Domain Model Pattern lohnt sich um so mehr, je grösser das System ist.
+
+Entscheide werden oft kontrovers diskutiert. Am Besten immer problemorientiert und nicht technologieorientiert Denken. Erfahrungen sind jedoch notwendig.
+
+\subsection{Distribution Patterns}
+Wie werden Daten effizient zwischen den Tiers übertragen?
+
+\begin{description}
+	\item[Attributebene] Client frägt nach jedem Attribut einzel. Sehr ineffizient, viele Kommunikationsschritte.
+	\item[Objektebene] Client erhält ganze Businessobjekte. Ineffizient, zu grosse Datenmengen.
+\end{description}
+
+Dieses Problem kann mit zwei Patterns angegangen werden.
+
+\paragraph{Pattern 1: Data Transfer Objects (DTOs)} Man definiert für den Daten-Transport für unterschiedliche Services optimierte, reine Datenobjekte. Enthalten nur Daten, keine Methoden. Enthalten nur Daten, welche vom Service benötigt werden. Vorteile - nur ein Funktionsaufruf (Kommunikation) notwendig. Effizient bezüglich Datenmenge. Aber es braucht eventuell sehr viele verschiedene DTOs. Mapping notwendig: DTOs müssen erzeugt werden. DTOs sind nicht wirklich objektorientiert.
+
+\paragraph{Pattern 2: Remote Facade} Fassadenklasse, welche die feingranularen Methodenaufrufe auf verschiedene Businessobjekte kapselt und aus den Resultaten DTOs baut. Fassade darf keine Businesslogik enthalten, Fassade übernimmt Mapping. Dies birgt den Vorteil, dass die Verbindung zwischen dem reinen objektorientierten Businessmodell und effizienter Kommunikation. Gefahr, dass man Businesslogik implementiert und ist nur ein Durchlauferhitzer.
+
+\paragraph{Einsatz der Patterns}
+Werden oft in Kombination eingesetzt. Achtung: Verwaltung der DTOs kann aufwendig werden. Model Driven Architecture kann hier helfen: Schnittstellen mit DTOs einzeln modellieren. Grosse Teile des Quellcodes auf Basis des Modells generieren. Das Mapping wird mittels Hilfswerkezug realisiert.
 
 \subsection{Diskussion: Thin-, Richt-, Fat-Client}
 Ein Thin-Client enthält nur die Präsentationsschicht. Eine HTML-Seite ist quasi ein Thin-Clien.t
 Der Rich-Client ist beispielsweise ein Java-Programm, welcher aber in einer n-Tier Architektur steckt. Auf dem Client ist nur die Präsentation geregelt. Die Business-Logik befindet sich auf einem andern tier. Der Fat-Client ist die Variante einer 2-Tier-Architektur. Business Logik steckt im Client.
+
+\subsection{Was ist oben was ist unten}
+Man spricht von oben, dem GUI, und von unten, den Daten.
