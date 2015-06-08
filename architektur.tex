@@ -7,6 +7,8 @@ Eine Architektur ist eine \textbf{Abstraktion} in welcher etwas zusammenfassend 
 	\item [Beziehungen] untereinander werden mit Abhängigkeiten, Schnittstellen und Datenflüsse modelliert.
 \end{description}
 
+Das schlimmste Gift einer Architektur sind zyklische Abhängigkeiten. Die am häufigst verwendete Schnittstelle ist die File-Schnittstelle (Grund: Robust).
+
 \subsection{Aspekte der Architektur}
 \begin{description}
 	\item[Grundlegende Struktur:] Schichten, Client/Server, n-tiers, Architekturmuster
@@ -39,6 +41,7 @@ Beschreibt als Konzept den Grundaufbau eines ganzen Systems. Wohingegen Entwurfs
 \subsubsection{Logische Aufteilung}
 
 \paragraph{Schichten} Mittels Schichten kann ein System aufbauend, funktional und getrennt gegliedert werden. Die Kommunikation erfolgt über wohldefinierte Schnittstellen. Abhängigkeit nur in Richtung der tieferliegenden Schicht. Achtung: Bei physischer Verteilung der einzelnen Schichten spricht man von \textbf{tiers}.
+Schichten überspringen oder einen Call auf die falsche Seite ist eine Architekturverletzung und wird mit der höchst Strafe geahndet!
 
 \paragraph{Schichtenbildung} Nach folgenden Kriterien können Schichten getrennt werden. Die Reihenfolge ist zur präferieren.
 \begin{enumerate}
@@ -107,7 +110,7 @@ Keine Redundanz der Logik vorhanden. Potential: Einbinden mehrere verschiedener 
 Die Aufteilung ermöglicht einen effizientere Nutzung der vorhandenen Rechenleistung. Bzw. Clients können redimensioniert werden. Falls das Design aber schlecht ist, dann kann die Kommunikation zwischen den verteilten Tiers kritisch werden. Potentiell hoher Ressourcenbedarf (Speicher) im Middle-Tier.
 
 \subsection{MVC}
-Dies ist ein Designmuster mit dem Ziel Datemodell von seiner Darstellung und deren Steuerung strikte zu trennen. Wichtig: Die exakte Implementation variiert nach Anwendungsfall und Programmiersprache!
+Dies ist ein Designmuster mit dem Ziel Datemodell von seiner Darstellung und deren Steuerung strikte zu trennen. Wichtig: Die exakte Implementation variiert nach Anwendungsfall und Programmiersprache! Es ist weder ein Design Pattern noch ein Architekturmuster. Es ist ein Zwitter!
 
 \paragraph{Anwendungsfall 1: MVC in GUI-Widgets wie Swing} Controller und View sind oft zusammengefasst. Das Model existiert jedoch autonom.
 

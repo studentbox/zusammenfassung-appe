@@ -14,7 +14,7 @@ Anforderungen können auf verschiedenen Abstraktionslevels beschrieben werden. A
 
 Aus den \emph{Needs} können die Kundenanforderungen abgeleitet werden. Es sind problemorientierte Anforderungen (Was will der Kunde?), welche auch vom Kunden verstanden werden. Ein \emph{Feature} ist ein Merkmal eines Systems, welches ein oder mehrere Anforderungselemente betrifft.
 
-Von den Kundenanforderungen werden die präzisen und widerspruchsfreien Softwareanforderungen abgeleitet. Es sind lösungsorientierte Anforderungen für die Entwickler. Sie dienen als Grundlage für das spätere Design.
+Von den Kundenanforderungen (fachlich) werden die präzisen und widerspruchsfreien Softwareanforderungen (technisch) abgeleitet. Es sind lösungsorientierte Anforderungen für die Entwickler. Sie dienen als Grundlage für das spätere Design.
 
 Zusätzlich zu den funktionalen Anforderungen (Was soll ein Produkt tun?) existieren die nichtfunktionalen Anforderungen. Beispiele für nichtfunktionale Anforderungen sind:
 \begin{itemize}
@@ -42,13 +42,20 @@ Anforderungen sollten folgende Eigenschaften erfüllen:
 Anforderungen dienen als Grundlage für den Architekturentwurf. Umgekehrt werden im Architekturentwurf auch
 Erkenntnisse gewonnen, die Auswirkungen auf die Anforderungen haben (Machbarkeit, Kosten) können. In der Praxis stellen wir daher
 eine starke Wechselwirkung zwischen der Anforderungsdefinition und dem Architekturentwurf fest, wie die Abbildung \ref{fig:anforderungsengineering} darstellt.
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{fig/anforderungsengineering}
 	\caption{Zusammenhang Anforderungen und Architektur}
 	\label{fig:anforderungsengineering}
 \end{figure}
 Das Anforderungsengineering kann mit zwei Vorgehens-Modellen durchgeführt werden. Beim ersten Modell wird das Anforderungsengineering als Projektphase durchgeführt. Dabei kann jedoch auf Anforderungs-Änderung erst spät reagiert werden und der Kunde ist nicht zufrieden. Bei Modellen wie SoDa oder Scrum werden die Anforderungen kontinuierlich (just in time) erhoben. Am Anfang eines Projektes definiert man die Anforderungen nur grob und geht zusammen mit dem Kunden immer mehr ins Detail.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/anforderungsengineering-prozess}
+	\caption{Anforderungsengineering Prozess}
+	\label{fig:anforderungsengineering-prozess}
+\end{figure}
 
 \subsection{Anforderungs-Techniken}
 
@@ -73,6 +80,8 @@ Sämtliche Use Cases und Benutzer eines Systems werden in einem Use Case Diagram
 \caption{Use Case Diagramm}
 \label{fig:use-case-diagramm}
 \end{figure}
+
+\paragraph{Best Practices} Verwende keine includes oder excludes. Uses Cases werden unnötige kompliziert. Use Cases können schlussendlich auch mit BPM, EPK oder Aktivitätsdiagramme modelliert werden, denn es sind Abläufe.
 
 \subsection{Anforderungen textuell festhalten}
 
@@ -159,6 +168,12 @@ Um Anforderungen besser verwalten zu können sollten folgende Punkte beachtet we
 
 \subsection{Use Case vs. User Story}
 Ersetzt das eine das andere? Nein. Es sind zwei unterschiedliche Dinge. Use Cases werden detailliert beschrieben und sind eher schwergewichtige Dokumentationsinstrumente. User Stories dienen eher zur Besprechung und auch als leichtgewichtige Planungsinstrumente. Prominente Methodiker wie Martin Fowler gehen davon aus, dass es zwei verschiedene Instrumente sind, welche sich ergänzen können\footnote{\href{http://blog.hood-group.com/blog/2013/05/15/use-cases-und-user-stories-verbundete-oder-feinde/}{http://blog.hood-group.com/blog/2013/05/15/use-cases-und-user-stories-verbundete-oder-feinde/}}.
+
+\subsection{Features vs. Use Cases}
+Use Case ist eine Überlegung eines Ablaufs. Erst beim Ablauf kommt man auf die Features.
+
+\subsection{RUP vs SODA}
+RUP ist Use Case-orientiert wohingegen Soda Story-orientiert ist.
 
 \section{Planung}
 
