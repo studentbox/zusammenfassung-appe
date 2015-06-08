@@ -74,3 +74,135 @@ Eine Voraussetzung für die Verwendung dieser Frameworks ist ein sauberer HTML-C
 Web-Applikationen mit Web 2.0 Technologien (HTML 5, Ajax, JavaScript) sind schwieriger zu Testen. Diese Applikationen werden mit echten Browsern mit einem Test-Plugin getestet. Die Grundlage ist die Browser-Automation, wobei SeleniumHQ und Arquillian zwei Frameworks sind die das unterstützen. 
 
 \section{SOLID}
+
+Das SOLID-Prinzip fasst fünf wichtige Designprinzipen zusammen:
+\begin{itemize}
+	\item Single Responsibility Principle
+	\item Open Closed Principle
+	\item Liskov Substitution Principle
+	\item Interface Segregation Principle
+	\item Dependency Inversion Principle
+\end{itemize}
+Durch die Einhaltung der SOLID-Prinzipien erreicht man ein besseres Design. Besseres Design heisst konkret:
+\begin{itemize}
+	\item höhere Wiederverwendbarkeit
+	\item leichtere Verständlichkeit / Lesbarkeit
+	\item (stark) verbesserte Testbarkeit
+	\item vereinfachte Wartung
+	\item verbesserte Erweiterbarkeit
+	\item leichteres Refactoring
+\end{itemize}
+
+\newpage
+
+\subsection{Single Responsibility Principle}
+
+\begin{itemize}
+	\item Unix-Philosophie: «Tu nur ein Ding, genau ein Ding, das aber richtig!»
+	\item Eine Klasse hat möglichst nur \textbf{eine} Zuständigkeit (siehe Listing \ref{lst:srp-interface})
+	\item Eine Klasse hat somit nur \textbf{einen} Grund zur Änderung
+	\item Änderungen oder Erweiterungen sollten sich auf möglichst wenige Klassen beschränken (hohe Kohäsion bleibt erhalten).
+	\item Viele kleine Klassen sind besser als wenige grosse Klassen
+	\item Wichtiger Nebeneffekt: Stark verbesserte Testbarkeit!
+\end{itemize}
+
+\begin{lstlisting}[caption={Schlechtes Interface nach SRP},label=lst:srp-interface]
+// Zwei Aufgaben: Verbindungsaufbau und Datenübertragung
+interface Modem {
+	public void dial(String phoneNumber);
+	public void hangup();
+	public void send(char c);
+	public char receive();
+}
+// Besser zwei Interfaces
+interface Connection {
+	public void dial(String phoneNumber);
+	public void hangup();
+}
+interface Transmit {
+	public void send(char c);
+	public char receive();
+}
+\end{lstlisting}
+
+\subsection{Open Closed Principle}
+
+\begin{itemize}
+	\item Eine Software-Entität soll offen für Erweiterungen, aber geschlossen gegenüber Modifikationen sein
+	\item Mit OCP senkt man das Risiko neue Fehler einzubauen, weil man bestehenden Code nicht ändern muss
+	\item Häufig über Einsatz des Strategy-Patterns (GoF) erreicht (siehe Listing \ref{lst:ocp-strategy})
+\end{itemize}
+
+\begin{lstlisting}[caption={Strategy Pattern um OCP umzusetzen},label=lst:ocp-strategy]
+// Was passiert, wenn eine (oder hundert) neue Operation ergänzt werden soll?
+double calc(Operation op, double arg1, double arg2) {
+	double result = 0.0;
+	switch (op) {
+		case Addition:
+			result = arg1 + arg2; break;
+		case Subtraktion:
+			result = arg1 - arg2; break;
+		default:
+			throw new IllegalArgumentException(); break;
+	}
+	return result;
+}
+// Pro neue Operation wird eine Klasse erstellt, welche das Interface Operation implementiert
+interface Operation {
+	double calc(double arg1, double arg2);
+}
+double calc(Operation op, double arg1, double arg2) {
+	return op.calc(arg1, arg2);
+}
+\end{lstlisting}
+
+\subsection{Liskov Substitution Principle}
+
+\begin{itemize}
+	\item Gut über den Sinn/die Korrektheit von Spezialisierungen nachdenken:
+	\begin{itemize}
+		\item Subtypen sollten sich so verhalten wie ihre Basistypen
+		\item Meist ist Komposition der Vererbung vorzuziehen!
+	\end{itemize}
+	\item Verifiziere Entscheide mit folgenden Sätzen:
+	 \begin{itemize}
+		\item Subtyp ist ein (is-a) Basistyp (Vererbung)
+		\item Subtyp verhält sich (behaves-as) wie ein Basistyp (Komposition)
+	 \end{itemize}
+	\item Macht die Implementation von \texttt{equals()} Schwierigkeiten, sollte man unbedingt die Vererbung hinterfragen!
+	\item Tipp: Vererbung konsequent verhindern (\texttt{final}): Nur dort wo sinnvoll und vorgesehen explizites Design für Spezialisierungen (Design for inheritance or else prohibit it).
+\end{itemize}
+
+\subsection{Interface Segregation Principle}
+
+\begin{itemize}
+	\item Schnittstelle strikt von Details der Implementation trennen (Ist mit Java einfach: Wir haben Interfaces!)
+	\item Schnittstellen sollen eine hohe Kohäsion haben
+	\item Basisklassen sollten nichts von ihren Spezialisierungen wissen
+	\item Kopplung zwischen Komponenten soll minimal sein
+	\item Viele kleine (schmale) Schnittstellen sind besser als eine zu grosse (fette) Schnittstelle
+	\item Population von Schnittstellen vermeiden (möglichst keine Vererbung von Schnittstellen)
+\end{itemize}
+
+\subsection{Dependency Inversion Principle}
+
+\begin{itemize}
+	\item DIP ist nicht gleich Dependency Injection!
+	\item High-Level Klassen sollen nicht von Low-Level Klassen abhängig sein, sondern beide von Interfaces (siehe Abbildung \ref{fig:dip-beispiel})
+	\item Interfaces sollen nicht von Details abhängig sein, sondern Details von Interfaces
+	\item Isolation von Klassen vereinfacht/ermöglicht die Testbarkeit (ggf. auch mit Einsatz von Test Doubles)
+	\item Auflösung von Dependencies über Dependency Injection (DI)
+\end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}[b]{0.8\textwidth}
+		\includegraphics[width=\textwidth]{fig/dip-schlecht}
+		\caption{High-Level-Klasse \texttt{Portfolio} ist abhängig von Low-Level-Klasse \texttt{ZurichStockExchangeClient} $\rightarrow$ Schlecht!}
+	\end{subfigure}
+	\begin{subfigure}[b]{\textwidth}
+		\includegraphics[width=\textwidth]{fig/dip-besser}
+		\caption{Bessere Lösung: \texttt{Portfolio} unabhängig von Implementationsdetails}
+	\end{subfigure}
+	\caption{Beispiel DIP}\label{fig:dip-beispiel}
+\end{figure}
