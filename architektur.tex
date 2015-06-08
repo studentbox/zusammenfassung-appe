@@ -1,11 +1,9 @@
 \section{Architektur}
-Eine Architektur ist eine \textbf{Abstraktion} in welcher etwas zusammenfassend und vereinfacht dargestellt wird.
-
-Mittels einer Architektur wird ein System beschrieben:
+Eine Architektur ist eine \textbf{Abstraktion} in welcher etwas zusammenfassend und vereinfacht dargestellt wird. Mittels einer Architektur wird ein System beschrieben:
 
 \begin{description}
 	\item[Struktur und Aufbau] werden durch Elemente wie Sub- und Teilsystemen dargestellt.
-	\item[Softwareteile] können mittels Aufgaben, Zuständigkeiten und Komponenten beschrieben werden.
+	\item[Softwareteile] werden mittels Aufgaben, Zuständigkeiten und Komponenten beschrieben.
 	\item [Beziehungen] untereinander werden mit Abhängigkeiten, Schnittstellen und Datenflüsse modelliert.
 \end{description}
 
@@ -18,7 +16,7 @@ Mittels einer Architektur wird ein System beschrieben:
 \end{description}
 
 \subsection{System und Subsystem}
-''Das Gebilde, Zusamengestellte, Verbundene''. Ein System ist die Gesamtheit von Elementen, welche aufgaben-, sinn- oder zweckgebunden sind. Verfügt über klare Abgrenzung zu seiner Umwelt und wird organisiert durch Struktur und Beziehung.
+Aus der Systemtheorie: ''Gebilde, Zusamengestellte, Verbundene''. Ein System ist die Gesamtheit von Elementen, welche aufgaben-, sinn- oder zweckgebunden sind. Verfügt über klare Abgrenzung zu seiner Umwelt und wird organisiert durch Struktur und Beziehung.
 
 \subsection{Softwaresysteme und Subsysteme}
 Softwaresysteme werden wenn möglich immer zerlegt in einzelne Subsysteme (Teilsysteme). Zerlegung erfolgt meist mehrstufig hierarchisch. Subsysteme haben eine gewisse Unabhängigkeit und kommunizieren nur über wohldefinierte Schnittstellen miteinander. Dies ermöglicht folgende Vorteile:
@@ -33,16 +31,15 @@ Softwaresysteme werden wenn möglich immer zerlegt in einzelne Subsysteme (Teils
 Diese Punkte sollten auch als Motivation gelten für eine gute Architektur. Es wird einfacher, verständlicher und übersichtlicher!
 
 \subsection{Komponenten und (Sub-)systeme}
-Eine Komponente ist eine softwaretechnische Einheit mit welcher man ein System realisieren kann. Ein System braucht nicht zwingend eine Komponente. Eine Komponenten kann zur Realisation von mehreren Systemen verwendet werden. Komponente und System sind orthogonal.
-
+Eine Komponente ist eine softwaretechnische Einheit mit welcher man ein System realisieren kann. Ein System braucht nicht zwingend eine Komponente. Eine Komponente kann zur Realisation von mehreren Systemen verwendet werden. Komponente und System sind orthogonal.
 
 \subsection{Architekturmuster}
-Beschreibt als Konzept den Grundaufbau eines ganzen Systems. Wohingegen Entwurfsmuster nur Konzepte für Teilprobleme sind. Architekturmuster sind nicht so stark vereinheitlicht wie Entwurfsmuster. Architekturmuster gibt es für verschiedene Aspekte: Um komplexe Systeme zU strukturieren, für verteilte Systeme, für interaktive Systeme, usw.
+Beschreibt als Konzept den Grundaufbau eines ganzen Systems. Wohingegen Entwurfsmuster nur Konzepte für Teilprobleme sind. Architekturmuster sind nicht so stark vereinheitlicht wie Entwurfsmuster. Architekturmuster gibt es für verschiedene Aspekte: Um komplexe Systeme zu strukturieren, für verteilte Systeme, für interaktive Systeme, usw.
 
 \subsubsection{Logische Aufteilung}
 \paragraph{Schichten} Mittels Schichten kann ein System aufbauend, funktional und getrennt gegliedert werden. Die Kommunikation erfolgt über wohldefinierte Schnittstellen. Abhängigkeit nur in Richtung der tieferliegenden Schicht. Achtung: Bei physischer Verteilung der einzelnen Schichten spricht man von \textbf{tiers}.
 
-\paragraph{Schichtenbildung} Nach folgenden Kriterien möglich: Logisch, Technologisch, Abstraktionsebene. Kann in Kombination hierarchisch verfeinert werden:
+\paragraph{Schichtenbildung} Nach folgenden Kriterien können Schichten getrennt werden. Die Reihenfolge ist zur präferieren.
 \begin{enumerate}
 	\item Logische Schichtung
 	\item Abstraktionslevel
@@ -61,7 +58,7 @@ Beispiel mittels Java-Packages:
 
 \paragraph{Verfeinerung Präsentationsschicht} Bei einem reinen Rich-GUI/Client ist es durchaus möglich, die reine Präsentation (Formulare, Dialoge) von der Präsentationslogik noch stärker zu trennen. Bspw. mittels MVC. Bei Thin-Clients (Web/HTML) ist die Trennung sogar zwingend notwendig. View wird durch HTML realisiert, Modelle und Präsentationslogik müssen im Server sein.
 
-\paragraph{Verfeinerung Geschäftslogikschicht} Hier kann man weiteraufteilen in Business Objects bzw. Domain Objects. Dies ist ein reines objektorientiertes Modell, unabhängig von Präsentation als auch von Persistenz, enthalten Daten und Methoden. Zum Anderen kann man weiter aufteilen in Business Services. Enthält Klassen für die Geschäftsprozesse, arbeitet mit Business Objects. Bspw. ''Bestellen''. Kann technologisch noch weiter verfeinert werden. Einen Business Service als Webservice anbieten.
+\paragraph{Verfeinerung Geschäftslogikschicht} Hier trennt man zwischen \textbf{Business Objects} und \textbf{Business Services}. Business Object (Domain Object) ist ein reines objektorientiertes Modell, unabhängig von Präsentation als auch von Persistenz, enthalten Daten und Methoden. Business Services enthält Klassen für die Geschäftsprozesse, arbeitet mit Business Objects. Bspw. der Business Service ''Bestellen'', kann technologisch noch weiter verfeinert werden. Einen Business Service als Webservice anbieten.
 
 \paragraph{Verfeinerung Datenhaltungsschicht} Abstraktion der reinen Datenlogik. Diese ist unabhängig vom DBMS und vom physischen Datenmodell. Bspw. mittels O/R-Mapping. Transparentes Einbinden von Legacy-Systemen. Abstraktion mehrere Backend (DBMS)-Systeme.
 
@@ -77,8 +74,7 @@ Wenn man diese Verfeinerung vornimmt kommt man zu dieser 6-Schichten Architektur
 \end{enumerate}
 Bei mehr als 3 Schichten, spricht man in der Regeln von n-Schicht-Architektur.
 
-\paragraph{Was ist die optimale Anzahl Schichten?}
-Es gibt Vorteile:
+Wie viele Schichten sollte ich implementieren? Es gibt keine konkrete Anzahl. Nachfolgend Vorteile für mehrere Schichten:
 \begin{itemize}
 	\item Bessere Strukturierung, einzelne Schichten klarer und einfacher.
 	\item Grössere Chance für Wiederverwendung
@@ -88,7 +84,7 @@ Es gibt Vorteile:
 	\item Parallele und getrennte Entwicklung möglich.
 \end{itemize}
 
-.. und Nachteile:
+.. und Nachteile für mehrere Schichten:
 \begin{itemize}
 	\item Komplexität des gesamten Systems wird grösser
 	\item Mehrere Schnittstellen, mehr Aufwand, mehr Planung.
@@ -100,7 +96,7 @@ Es gibt Vorteile:
 \paragraph{2-tier: Client/Server}
 Klassisch: GUI-Client greift direkt auf DB-Server zu. Typisch kennt man n-Clients und 1-DB Server (n:1). Natürlich auch n:n möglich. Dies kennt man heute eher im firmeninternen Bereich (Intranet). Ist häufig auch plattformspezifisch. Die Datenhaltung und Integrität wird mittels Datenmodell und Constraints gewährleistet, die Datenlogik wird u.a. mittels Trigger/Procedures realisiert.
 
-Es ist eine einfache Architektur und gut überblickbar. Die Datenhaltung ist zentral. Jedoch für grosse / komplexe Anwendungen gibt es keinen guten Ort für die Business-Logik. Der Client wird fat, Bussiness-Logik ist redundanten vorhanden, Änderungen verlangen vollständiges redeployment. Falls im DB-Server programmiert wird, dann gibt es x unterschiedlche Sprachen je nach DMS-Hersteller. Hohe Last durch Prozeduren, Triggers und co. Wenn man einen Teil im Client und einem Teil im DB Server implementiert, dann ist es oft schwierig zu sagen, was nun wo hin soll. Demzufolge auch schlechte Wartbarkeit, weniger elegant.
+Es ist eine einfache Architektur und gut überblickbar. Die Datenhaltung ist zentral. Jedoch für grosse / komplexe Anwendungen gibt es keinen guten Ort für die Business-Logik. Der Client wird fat, Bussiness-Logik ist redundant vorhanden, Änderungen verlangen vollständiges redeployment. Falls im DB-Server programmiert wird, dann gibt es x unterschiedlche Sprachen je nach DMS-Hersteller. Hohe Last durch Prozeduren, Triggers und co. Wenn man einen Teil im Client und einem Teil im DB Server implementiert, dann ist es oft schwierig zu sagen, was nun wo hin soll. Demzufolge auch schlechte Wartbarkeit, weniger elegant.
 
 \paragraph{3-tier Architektur}
 Basis für die meisten Enterprise Architekturen. Typisch m:1:n (Client:Business-Daten).
@@ -145,27 +141,27 @@ MVC Pattern ist fundamental im SW-Design. Modelle sind meist sehr stabil und bie
 
 \paragraph{Alternativen} Es gibt weitere Varianten wie MVP von IBM, Taligent, Martin Fowler. Grundsätzlich will man View unabhängiger vom Modell gestalten. Mehr Potential beim Testen!
 
-\section{Implementation der Business Logik}
-Es muss wie immer gut Wartbar und Erweiterbar sein, hohe Wiederverwendung haben. Einfache Integration verschiedener Technologien, möglichst hohe Technologieunabhängigkeit. Einfacher Zugriff auf 
+\subsection{Implementation der Business Logik}
+Es muss wie immer gut wartbar und erweiterbar sein, hohe Wiederverwendung haben. Einfache Integration verschiedener Technologien, möglichst hohe Technologieunabhängigkeit. Einfacher Zugriff auf 
 
-\subsection{Domain Logic Pattern: Transaction Script}
+\subsubsection{Domain Logic Pattern: Transaction Script}
 Strukturiert Geschäftslogik in einzelne in sich abgeschlossene Funktionen. Transaktion im Sinne von ''logical unit of work''.
 
 Klassisches EVA-Prinzip. Alte Idee mit Ursprung in Hostsystemen mit Terminals (Host-Transaktionen). Sehr starke Kopplung zu Präenstation und Datenbank. Hohe Spezialisierung, schlechte Austauschbarkeit. Gute Performance, weil minimaler Overhead. Für kleine Systeme, einfach und schnelle Implementation. Für grosse - schlechte wartbarkeit, viel Redundanz, keine Wiederverwendung -> Nein!
 
-\subsection{Domain Logic Pattern: Table Module}
+\subsubsection{Domain Logic Pattern: Table Module}
 Pro Entität (Tabelle) eine Klasse, welche die Businesslogik für alle Tupel enthält. Arbeitet so effizient mit ganzen Tupelmengen. Direkte Datenweitergaben an Präsentation möglich. Logisches Beispiel: Singleton Klasse Artikel mit CRUD-Operationen. Technisches Beispiel: Java Klasse, welche mit ResultSet arbeitet.
 
 Hat den Ursprung in der zwei Schichten Architektur. Sehr starke Kopplung an DB. Für Systeme mit wenig oder einfacher Businesslogik. Für grosse Systeme ungeeignet. Für Businessprozesse, welche mehrere Entitäten betreffen drohen Redundanzen und mit grossen Datenmengen kann es kollabieren.
 
-\subsection{Domain Logic Pattern: Domain Model}
+\subsubsection{Domain Logic Pattern: Domain Model}
 Abstraktion der Geschäftsprozesse und Geschäftsdaten. Reines objektorientiertes Modell der Domäne. Vollständige Trennung von der physischen Datenspeicherung. Interaktion zwischen den Objekten. Logisches Beispiel: \textbf{Artikel} beschreibt einen konkreten Artikel, welches einem Lager zugeordnet ist. \textbf{Lager} beschreibt ein Lager in welchem Artikel sind. Hat die Fähigkeit zu reservieren, zu beziehen usw.
 Technisches Beispiel: EJBs oder DomainModel mit POJOs.
 
 Realisiert praktisch alle Vorteile einer logischen 3-Schichten Architektur. Entkopplung von der Präsentation und Datenspeicherung, hohe Wiederverwendung, gute Wart- und Erweiterbarkeit. Starke Strukturen, leichtes Verständnis. Skaliert auch für sehr grosse und komplexe Enterprise Systeme.
 O/R-Mapping verursacht jedoch einen gewissen Overhead. Effizienter Datenaustausch zwischen Schichten ist eine Herauserforderung.
 
-\subsection{Domain Logic Pattern: Service Layer}
+\subsubsection{Domain Logic Pattern: Service Layer}
 Optimale Ergänzung zu einem beliebigen Domain Logic Pattern. Verschiedene Clients benötigen sehr unterschiedliche Schnittstellen.
 
 \begin{itemize}
@@ -176,14 +172,14 @@ Optimale Ergänzung zu einem beliebigen Domain Logic Pattern. Verschiedene Clien
 
 Lösung: Man bietet übergeordnete Services an, welche die Businesslogik erneut kapseln. Grundlage eines Service Oriented Architecture (SOA) und eines Enterprise Service Bus (ESB). Technisches Beispiel: Webservice (Wrappen bestehende Businessfunktionalitäten)
 
-\subsection{Auswahl des geeigneten Patterns}
+\subsubsection{Auswahl des geeigneten Patterns}
 Es kommt auf die Grösse und Komplexität des gesamten Systems an. Weitere wichtigte Aspekte sind Lebensdauer, einzelne Geschäftsprozesse.
 
 Domain Model Pattern lohnt sich um so mehr, je grösser das System ist.
 
 Entscheide werden oft kontrovers diskutiert. Am Besten immer problemorientiert und nicht technologieorientiert Denken. Erfahrungen sind jedoch notwendig.
 
-\subsection{Distribution Patterns}
+\subsubsection{Distribution Patterns}
 Wie werden Daten effizient zwischen den Tiers übertragen?
 
 \begin{description}
