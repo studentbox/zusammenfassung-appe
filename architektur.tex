@@ -9,14 +9,14 @@ Eine Architektur ist eine \textbf{Abstraktion} in welcher etwas zusammenfassend 
 
 \subsection{Aspekte der Architektur}
 \begin{description}
-	\item[Grundlegende Struktur] Schichten, Client/Server, n-tiers, Architekturmuster
-	\item[Kommunikation und Verarbeitung] Kommunikationsmuster (Synchron/Asynchron), Verteilbarkeit, Parallelität, Performance, Robustheit
-	\item[Technologien] Userinterface (Fat-, Rich- oder Thin-Client), Persistenz der Daten (Frameworks, O/R-Mapping), Referenzarchitekturen
-	\item[Qualitätsaspekte] Wartungsfreundlichkeit, Erweiterbarkeit
+	\item[Grundlegende Struktur:] Schichten, Client/Server, n-tiers, Architekturmuster
+	\item[Kommunikation und Verarbeitung:] Kommunikationsmuster (Synchron/Asynchron), Verteilbarkeit, Parallelität, Performance, Robustheit
+	\item[Technologien:] Userinterface (Fat-, Rich- oder Thin-Client), Persistenz der Daten (Frameworks, O/R-Mapping), Referenzarchitekturen
+	\item[Qualitätsaspekte:] Wartungsfreundlichkeit, Erweiterbarkeit
 \end{description}
 
 \subsection{System und Subsystem}
-Aus der Systemtheorie: ''Gebilde, Zusamengestellte, Verbundene''. Ein System ist die Gesamtheit von Elementen, welche aufgaben-, sinn- oder zweckgebunden sind. Verfügt über klare Abgrenzung zu seiner Umwelt und wird organisiert durch Struktur und Beziehung.
+Aus der Systemtheorie: ''Gebilde, Zusammengestellte, Verbundene''. Ein System ist die Gesamtheit von Elementen, welche aufgaben-, sinn- oder zweckgebunden sind. Verfügt über klare Abgrenzung zu seiner Umwelt und wird organisiert durch Struktur und Beziehung.
 
 \subsection{Softwaresysteme und Subsysteme}
 Softwaresysteme werden wenn möglich immer zerlegt in einzelne Subsysteme (Teilsysteme). Zerlegung erfolgt meist mehrstufig hierarchisch. Subsysteme haben eine gewisse Unabhängigkeit und kommunizieren nur über wohldefinierte Schnittstellen miteinander. Dies ermöglicht folgende Vorteile:
@@ -37,6 +37,7 @@ Eine Komponente ist eine softwaretechnische Einheit mit welcher man ein System r
 Beschreibt als Konzept den Grundaufbau eines ganzen Systems. Wohingegen Entwurfsmuster nur Konzepte für Teilprobleme sind. Architekturmuster sind nicht so stark vereinheitlicht wie Entwurfsmuster. Architekturmuster gibt es für verschiedene Aspekte: Um komplexe Systeme zu strukturieren, für verteilte Systeme, für interaktive Systeme, usw.
 
 \subsubsection{Logische Aufteilung}
+
 \paragraph{Schichten} Mittels Schichten kann ein System aufbauend, funktional und getrennt gegliedert werden. Die Kommunikation erfolgt über wohldefinierte Schnittstellen. Abhängigkeit nur in Richtung der tieferliegenden Schicht. Achtung: Bei physischer Verteilung der einzelnen Schichten spricht man von \textbf{tiers}.
 
 \paragraph{Schichtenbildung} Nach folgenden Kriterien können Schichten getrennt werden. Die Reihenfolge ist zur präferieren.
