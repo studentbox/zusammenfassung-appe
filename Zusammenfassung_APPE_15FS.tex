@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper]{scrreprt}
+\documentclass[11pt,DIV=15]{scrreprt}
 
 % Codierung
 \usepackage{selinput}
@@ -19,17 +19,13 @@
 \cohead*{}
 \rohead*{}
 \lofoot*{APPE}
-\cofoot*{}
+\cofoot*{\today}
 \rofoot*{Seite \thepage \hspace{1pt} von \pageref{LastPage}}
-
-\usepackage{lipsum}
 
 % Bilder
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{color}
-
-
 
 % Hyperlinks
 \usepackage[hidelinks]{hyperref}
@@ -76,24 +72,9 @@
 }
 
 \begin{document}
-\titlehead{Hochschule Luzern \\ 
-	Technik \& Architektur}
-\subject{Zusammenfassung}
-\title{Applikationsentwicklung}
-\subtitle{}
-\author{Fabian Wüthrich \\ 
-	Simon Erni \\ 
-	Alex Suter}
-\date{\today}
+	
+\input{title}
 
-\maketitle
-
-\tableofcontents
-
-\include{hofstetter}
-
-\include{gisler}
-
-\include{christen}
+\input{content}
 
 \end{document}
