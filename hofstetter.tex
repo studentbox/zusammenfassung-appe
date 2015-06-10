@@ -3,10 +3,10 @@
 \section{Anforderungen}
 
 \subsection{Begriffe}
-\begin{itemize}
-	\item Anforderungen: Wünsche, Ziele und Vorgaben von Benutzer an ein System. Bedingungen und Eigenschaften des zu entwickelnden Systems.
-	\item Stakeholder: Person oder Organisation die Einfluss auf die Anforderungen hat. (Bspw: Kunde, Vorschriften, Gesetze)
-\end{itemize}
+\begin{description}
+	\item[Anforderungen:] Wünsche, Ziele und Vorgaben von Benutzer an ein System. Bedingungen und Eigenschaften des zu entwickelnden Systems.
+	\item[Stakeholder:] Person oder Organisation die Einfluss auf die Anforderungen hat. (Bspw: Kunde, Vorschriften, Gesetze)
+\end{description}
 
 \subsection{Einführung}
 
@@ -304,26 +304,23 @@ Pakete sind Ansammlungen von irgendwelchen Modellelementen. Mittels Paketen wird
 \subsection{Zyklische Abhängigkeiten}
 Wenn A von B abhängig ist und B von A. Oder wenn A von B und B von C und C wiederum von A. Dann haben wir Zyklen. Das erhöht die Kopplung des System und ist schlecht wartbar. Zyklen konnen oft mittels eines dritten vermieden werden. Der Dritte entkoppelt die beiden voneinander. In Java wird oft das Observer-Pattern eingesetzt.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.7\linewidth]{fig/observer-pattern}
-\caption{Observer-Pattern}
-\label{fig:observer-pattern}
-\end{figure}
-
 \subsection{Weitere Modellierungen}
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.7\linewidth]{fig/layer-modellierung}
-\caption{Layer-Modellierung}
-\label{fig:layer-modellierung}
-\end{figure}
 
 \begin{figure}[h!]
-\centering
-\includegraphics[width=0.7\linewidth]{fig/interface-uml}
-\caption{Interface in UML}
-\label{fig:interface-uml}
+	\centering
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{fig/interface-uml}
+		\caption{Interface in UML}
+		\label{fig:interface-uml}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{fig/layer-modellierung}
+		\caption{Layer-Modellierung}
+		\label{fig:layer-modellierung}
+	\end{subfigure}
+	\caption{Weitere Modellierungen}
+	\label{fig:weitere-modellierungen}
 \end{figure}
 
 \subsection{Software Architektur Dokument}

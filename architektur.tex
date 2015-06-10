@@ -117,29 +117,31 @@ Dies ist ein Designmuster mit dem Ziel Datemodell von seiner Darstellung und der
 \paragraph{Anwendungsfall 2: MVC auf Applikationsebene} Model ist meist eine ganz normale Java-Klasse. Mehrere Views können die Daten darstellen. Änderungen im Modell werden an die Views gesendet. Modell darf aber View nicht kennen (Observer)! Ein Controller verändert die Modelle und ordnet den Views die entsprechenden Modelle zu. Bsp: Modell einer Kundenadresse. Zwei Views: Detailliertes Formulare und als Zeile in Tabellenansicht.
 
 \begin{figure}[h!]
-\centering
-\includegraphics[width=0.7\linewidth]{fig/mvc}
-\caption{MVC}
-\label{fig:mvc}
+	\centering
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{fig/mvc}
+		\caption{MVC Prinzip}
+		\label{fig:mvc}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{fig/mvc-web-1}
+		\caption{MVC Variante 1: Alt und eher schlecht. (View Controller vermischt)}
+		\label{fig:mvc-web-1}
+	\end{subfigure}
+	~
+	\begin{subfigure}[b]{0.3\textwidth}
+		\includegraphics[width=\textwidth]{fig/mvc-web-2}
+		\caption{MVC Variante 2: Neu und eher besser.}
+		\label{fig:mvc-web-2}
+	\end{subfigure}
+	\caption{MVC Pattern}\label{fig:mvc-pattern}
 \end{figure}
 
 \paragraph{Implementationsvarianten} Kopplung zwischen Model und View. Observerpattern zwischen Modell und View oder über Controller. Statisches Modell: Notifikation über Änderungen im Modell (eher bei grösseren Modellen mit wenig Änderungen). Dynamisches Modell: Aktuelles Modell wird der View regelmässig übergeben (eher bei kleineren Modellen mit vielen Änderungen).
 
-\paragraph{MVC in Webapplikationen} MVC Architektur ist bedingt durch die Technologie von Web-Applikationen eine Herauserforderung. Es besteht oft die Gefahr View und Business-Logic zu vermischen. Modell kann jeweils relativ einfach extrahiert werden. Im Laufe der Zeit sind zwei MVC-Varianten entstanden:
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.7\linewidth]{fig/mvc-web-1}
-\caption{MVC Variante 1: Alt und eher schlecht. (View Controller vermischt)}
-\label{fig:mvc-web-1}
-\end{figure}
-
-\begin{figure}[h!]
-\centering
-\includegraphics[width=0.7\linewidth]{fig/mvc-web-2}
-\caption{MVC Variante 2: Neu und eher besser.}
-\label{fig:mvc-web-2}
-\end{figure}
+\paragraph{MVC in Webapplikationen} 
+MVC Architektur ist bedingt durch die Technologie von Web-Applikationen eine Herauserforderung. Es besteht oft die Gefahr View und Business-Logic zu vermischen. Modell kann jeweils relativ einfach extrahiert werden. Im Laufe der Zeit sind zwei MVC-Varianten entstanden:
 
 MVC Pattern ist fundamental im SW-Design. Modelle sind meist sehr stabil und bieten hohe Kohäsion und lose Kopplung. Pro Modell können verschiedene Views existieren. Die Wiederverwendung von Controller ist jedoch sehr gering, da oft hoch spezialisiert. Controller agieren als Leim zwischen View und Modell.
 
