@@ -59,7 +59,7 @@ Das Anforderungsengineering kann mit zwei Vorgehens-Modellen durchgeführt werde
 
 \subsection{Anforderungs-Techniken}
 
-Anforderungen könne aus verschiedenen Quellen (Stakeholder, Dokumente usw.) und mit verschiedenen Ermittlungstechniken erhoben werden. Um diese Anforderungen festzuhalten werden folgende Techniken eingesetzt:
+Anforderungen können aus verschiedenen Quellen (Stakeholder, Dokumente usw.) und mit verschiedenen Ermittlungstechniken erhoben werden. Um diese Anforderungen festzuhalten werden folgende Techniken eingesetzt:
 \begin{description}
 	\item[Systemkontext:] Abgrenzung des Produktumfanges (Kontextdiagramm)
 	\item[Ziele:] Es werden die Intentionen der Kunden festgehalten (keine Lösungsansätze dokumentieren)
@@ -81,7 +81,7 @@ Sämtliche Use Cases und Benutzer eines Systems werden in einem Use Case Diagram
 \label{fig:use-case-diagramm}
 \end{figure}
 
-\paragraph{Best Practices} Verwende keine includes oder excludes. Uses Cases werden unnötige kompliziert. Use Cases können schlussendlich auch mit BPM, EPK oder Aktivitätsdiagramme modelliert werden, denn es sind Abläufe.
+\paragraph{Best Practices} Verwende keine includes oder excludes. Uses Cases werden unnötige kompliziert. Use Cases können schlussendlich auch mit BPMN, EPK oder Aktivitätsdiagramme modelliert werden, denn es sind Abläufe.
 
 \subsection{Anforderungen textuell festhalten}
 
@@ -207,7 +207,7 @@ Der Product Backlog besteht aus Backlog-Items. Zu jedem Backlog-Item gehören Ak
 
 Ein Sprint gliedert sich in eine Sprint Planung, der Sprint Durchführung und dem Sprint Abschluss. 
 Bei der Sprint Planung stellt der Product Owner das Sprint-Ziel und wichtige Anforderungen vor. Das Team wählt und schätzt die Anforderungen zusammen mit dem Product Owner. Danach plant das Team die einzelnen Task der Anforderungen. Die Planung darf jedoch nicht überhand nehmen.
-Bei der Sprint Durchführung arbeitet das Team Tasks aus dem Sprint Backlog ab. Fertige Anforderungen werden zur Kontrolle auf dem Burn-Down Chart vermerkt. Der Produkt Qwner nimmt die fertigen Anforderungen ab. 
+Bei der Sprint Durchführung arbeitet das Team Tasks aus dem Sprint Backlog ab. Fertige Anforderungen werden zur Kontrolle auf dem Burn-Down Chart vermerkt. Der Produkt Owner nimmt die fertigen Anforderungen ab. 
 Der Sprint Abschluss wird zusätzlich noch in einen Sprint Review und einer Retrospektive unterteilt. Der Sprint Review ist eine öffentliche Veranstaltung auch für den Kunden. Am besten lädt man den Kunden direkt ein zum Sprint Review. Die fertige Anforderungen werden vorgeführt. Bei der Retrospektive reflektiert das Team den letzten Sprint. Gutes wird beibehalten und Probleme werden behoben.
 
 \begin{figure}
@@ -224,7 +224,7 @@ Der Sprint Abschluss wird zusätzlich noch in einen Sprint Review und einer Retr
 \begin{itemize}
 	\item Dokumentation aktualisiert (SysSpec).
 	\item Code ist implementiert und auf der DEV Umgebung integriert.
-	\item Code wurde durch einen zweiten Entwicklicker reviewed.
+	\item Code wurde durch einen zweiten Entwickler reviewed.
 \end{itemize}
 
 \begin{figure}
@@ -237,9 +237,9 @@ Der Sprint Abschluss wird zusätzlich noch in einen Sprint Review und einer Retr
 \section{Modellieren}
 Modellieren ist eine wichtige Tätigkeit. Man modelliert aus mehreren Gründen: Dokumentation, Verständnis- und Konsensbildung oder gesetzliche Vorgaben.
 
-Es ist stets darauf zu Achten, dass man die richtige Flughöhe besitzt. Man spricht von \emph{Level of abstraction}. Zu Projektbeginn interessiert es niemanden, ob die Toilette im WC gelb oder grün wird. 
+Es ist stets darauf zu Achten, dass man die richtige Flughöhe besitzt. Man spricht von \emph{Level of Abstraction}. Zu Projektbeginn interessiert es niemanden, ob die Toilette im WC gelb oder grün wird. 
 
-Oft ist das Modelliert ungleich dem Implementierten. Darauf sollte man immer bedacht sein und vorab vielleicht mal zuerst die Implementierung anschauen. Und in einem Konsistenzcheck eine Soll und Ist Gegenüberstellung machen.
+Oft ist das Modellierte ungleich dem Implementierten. Darauf sollte man immer bedacht sein und vorab vielleicht mal zuerst die Implementierung anschauen und in einem Konsistenzcheck eine Soll und Ist Gegenüberstellung machen.
 
 \subsection{Begriffe}
 \begin{itemize}
@@ -248,7 +248,7 @@ Oft ist das Modelliert ungleich dem Implementierten. Darauf sollte man immer bed
 \end{itemize}
 
 \subsection{Modell-Typen}
-Grundsätzlich unterscheidet man zwischen statischen und dynamischen Modellen. Ein statisches Modell beschreibt die Struktur, den Aufbau eines Systems (Uses-Beziehungen, part-of Zerlegung, Layer und Schichten, Verteilung)). Ein dynamisches Modell beschreibt wie das System interagiert, wie es lebt  (Daten- und Kontroll-Fluss, ausführbare Einheiten, Parallelität).
+Grundsätzlich unterscheidet man zwischen statischen und dynamischen Modellen. Ein statisches Modell beschreibt die Struktur, den Aufbau eines Systems (Uses-Beziehungen, part-of Zerlegung, Layer und Schichten, Verteilung). Ein dynamisches Modell beschreibt wie das System interagiert, wie es lebt  (Daten- und Kontroll-Fluss, ausführbare Einheiten, Parallelität).
 
 Man modelliert auf unterschiedlichen Ebenen. Auf der Konzept-Ebene geht es dabei um Analyse und Anforderungen. Auf der Ebene der Architektur will man die Komponenten-Beziehungen und Layer aufzeigen. Und auf Implementations-Ebene modelliert man den Code. Siehe dazu Abbildung \ref{fig:modelltypen}.
 
@@ -260,7 +260,7 @@ Man modelliert auf unterschiedlichen Ebenen. Auf der Konzept-Ebene geht es dabei
 \end{figure}
 
 \subsection{Datenfluss vs. Kontrollfluss}
-Der Kontrollfluss bezieht sich auf die zeitliche Abfolge der einzelnen Befehle. Der Datenfluss konzentriert sich auf die zeitliche Abfolge des Datenaustausches. Beide sind grundsätzlich gerichtet. Bsp: Datenfluss- und Kontrollfluss können in einer Aktion auch unterschiedliche Richtungen haben. Denke dabei an eine Getter-Methode wie int getZahl().
+Der Kontrollfluss bezieht sich auf die zeitliche Abfolge der einzelnen Befehle. Der Datenfluss konzentriert sich auf die zeitliche Abfolge des Datenaustausches. Beide sind grundsätzlich gerichtet. Bsp: Datenfluss- und Kontrollfluss können in einer Aktion auch unterschiedliche Richtungen haben. Denke dabei an eine Getter-Methode wie \texttt{int getZahl()}.
 
 \begin{figure}[h!]
 	\centering
@@ -302,7 +302,7 @@ Eine spezielle Form der Abhängigkeit. Klasse A hat eine Assoziation zur Klasse 
 Pakete sind Ansammlungen von irgendwelchen Modellelementen. Mittels Paketen wird ein komplexes System in kleinere, überblickbare Einheiten gegliedert. Ein bestimmtes Modellelement gehört genau zu einem Paket.
 
 \subsection{Zyklische Abhängigkeiten}
-Wenn A von B abhängig ist und B von A. Oder wenn A von B und B von C und C wiederum von A. Dann haben wir Zyklen. Das erhöht die Kopplung des System und ist schlecht wartbar. Zyklen konnen oft mittels eines dritten vermieden werden. Der Dritte entkoppelt die beiden voneinander. In Java wird oft das Observer-Pattern eingesetzt.
+Wenn A von B abhängig ist und B von A. Oder wenn A von B und B von C und C wiederum von A. Dann haben wir Zyklen. Das erhöht die Kopplung des System und ist schlecht wartbar. Zyklen können oft mittels eines dritten vermieden werden. Der Dritte entkoppelt die beiden voneinander. In Java wird oft das Observer-Pattern eingesetzt. %TODO Alex was hast du da gemeint?
 
 \subsection{Weitere Modellierungen}
 

@@ -18,7 +18,7 @@ Das schlimmste Gift einer Architektur sind zyklische Abhängigkeiten. Die am hä
 \end{description}
 
 \subsection{System und Subsystem}
-Aus der Systemtheorie: ''Gebilde, Zusammengestellte, Verbundene''. Ein System ist die Gesamtheit von Elementen, welche aufgaben-, sinn- oder zweckgebunden sind. Verfügt über klare Abgrenzung zu seiner Umwelt und wird organisiert durch Struktur und Beziehung.
+Ein System ist die Gesamtheit von Elementen, welche aufgaben-, sinn- oder zweckgebunden sind. Verfügt über klare Abgrenzung zu seiner Umwelt und wird organisiert durch Struktur und Beziehung.
 
 \subsection{Softwaresysteme und Subsysteme}
 Softwaresysteme werden wenn möglich immer zerlegt in einzelne Subsysteme (Teilsysteme). Zerlegung erfolgt meist mehrstufig hierarchisch. Subsysteme haben eine gewisse Unabhängigkeit und kommunizieren nur über wohldefinierte Schnittstellen miteinander. Dies ermöglicht folgende Vorteile:
@@ -148,12 +148,12 @@ MVC Pattern ist fundamental im SW-Design. Modelle sind meist sehr stabil und bie
 \paragraph{Alternativen} Es gibt weitere Varianten wie MVP von IBM, Taligent, Martin Fowler. Grundsätzlich will man View unabhängiger vom Modell gestalten. Mehr Potential beim Testen!
 
 \subsection{Implementation der Business Logik}
-Es muss wie immer gut wartbar und erweiterbar sein, hohe Wiederverwendung haben. Einfache Integration verschiedener Technologien, möglichst hohe Technologieunabhängigkeit. Einfacher Zugriff auf 
+Es muss wie immer gut wartbar und erweiterbar sein, hohe Wiederverwendung haben. Einfache Integration verschiedener Technologien, möglichst hohe Technologieunabhängigkeit.
 
 \subsubsection{Domain Logic Pattern: Transaction Script}
 Strukturiert Geschäftslogik in einzelne in sich abgeschlossene Funktionen. Transaktion im Sinne von ''logical unit of work''.
 
-Klassisches EVA-Prinzip. Alte Idee mit Ursprung in Hostsystemen mit Terminals (Host-Transaktionen). Sehr starke Kopplung zu Präenstation und Datenbank. Hohe Spezialisierung, schlechte Austauschbarkeit. Gute Performance, weil minimaler Overhead. Für kleine Systeme, einfach und schnelle Implementation. Für grosse - schlechte wartbarkeit, viel Redundanz, keine Wiederverwendung -> Nein!
+Klassisches EVA-Prinzip. Alte Idee mit Ursprung in Hostsystemen mit Terminals (Host-Transaktionen). Sehr starke Kopplung zu Präsentation und Datenbank. Hohe Spezialisierung, schlechte Austauschbarkeit. Gute Performance, weil minimaler Overhead. Für kleine Systeme, einfach und schnelle Implementation. Für grosse - schlechte wartbarkeit, viel Redundanz, keine Wiederverwendung -> Nein!
 
 \subsubsection{Domain Logic Pattern: Table Module}
 Pro Entität (Tabelle) eine Klasse, welche die Businesslogik für alle Tupel enthält. Arbeitet so effizient mit ganzen Tupelmengen. Direkte Datenweitergaben an Präsentation möglich. Logisches Beispiel: Singleton Klasse Artikel mit CRUD-Operationen. Technisches Beispiel: Java Klasse, welche mit ResultSet arbeitet.
